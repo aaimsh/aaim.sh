@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Team — aaim.sh</title>
+<meta name="description" content="Senior engineers who lead enterprise delivery squads as their solution architect. Background in Saudi payments, identity, telecom, government and hospitality systems." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://aaim.sh/team/" />
+<meta property="og:title" content="aaim.sh/team — solution architects for enterprise squads" />
+<meta property="og:description" content="One senior architect in each of your squads: designs it, builds the risky parts, gets it through security review, hands it over." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0d0c;
+    --panel:#101412;
+    --inset:#0d1110;
+    --line:#1c2220;
+    --fg:#d6dcd6;
+    --dim:#7a8a82;
+    --dimmer:#4d5a55;
+    --accent:#7ee2b8;        /* mint terminal green */
+    --accent-2:#f5c267;       /* amber */
+    --warn:#e07a5f;
+    --link:#8ec5ff;
+    --str:#b8e3a4;
+    --num:#c8a8ff;
+    --selection:#7ee2b833;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--selection)}
+  a{color:var(--link);text-decoration:none;border-bottom:1px dotted var(--dimmer)}
+  a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  pre,code{font-family:inherit;margin:0}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .nw{white-space:nowrap}
+
+  /* Window chrome */
+  .shell{max-width:1180px;margin:24px auto;padding:0 18px}
+  .term{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:0 30px 80px -40px #000, inset 0 0 0 1px #ffffff04}
+  .term-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);background:linear-gradient(#13181600,#0e1211)}
+  .dots{display:flex;gap:6px;flex-shrink:0}
+  .dot{width:10px;height:10px;border-radius:50%;background:#2a3230;border:1px solid #1a201e}
+  .dot.r{background:#3a2422}
+  .dot.y{background:#3a3322}
+  .dot.g{background:#22382e}
+  .term-title{color:var(--dim);font-size:12px;letter-spacing:.04em;flex:1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .term-tabs{display:flex;gap:4px;flex-shrink:0}
+  .tab{padding:3px 9px;font-size:11px;border:1px solid var(--line);border-radius:3px;color:var(--dim);cursor:pointer;user-select:none}
+  .tab.active{color:var(--accent);border-color:#244236;background:#0f1c17}
+  .tab:hover{color:var(--fg)}
+  a.tab:hover{border-color:#244236}
+
+  .term-body{display:block;padding:24px 28px 36px;min-height:560px}
+  .prompt{color:var(--accent)}
+  .path{color:var(--accent-2)}
+  .arrow{color:var(--dim)}
+  .comment{color:var(--dimmer)}
+  .key{color:var(--accent-2)}
+  .str{color:var(--str)}
+  .num{color:var(--num)}
+  .err{color:var(--warn)}
+  .ok{color:var(--accent)}
+  .dim{color:var(--dim)}
+  .em{color:var(--fg);font-weight:500}
+
+  .row{display:flex;gap:8px;align-items:flex-start}
+  .row .prompt-line{white-space:pre}
+  .block{margin:14px 0}
+  .box{border:1px solid var(--line);border-radius:4px;padding:14px 16px;background:var(--inset)}
+  .box p{margin:0 0 8px}
+  .box p:last-child{margin-bottom:0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:780px){.grid2{grid-template-columns:1fr}}
+
+  section{margin:30px 0}
+  ul{margin:6px 0;padding-left:18px}
+  ol{margin:6px 0;padding-left:22px}
+  li{margin:3px 0}
+  ul li::marker{color:var(--dimmer)}
+  ol li::marker{color:var(--accent-2)}
+
+  /* squad topology banner */
+  .diagram{margin-top:14px;color:var(--dim);font-size:13px;line-height:1.35;white-space:pre;overflow-x:auto}
+  .diagram .ln{color:var(--dimmer)}
+  .diagram .arch{color:var(--accent);font-weight:700;background:#0f1c17}
+  .ascii-sub{color:var(--dim);margin-top:8px}
+
+  /* neofetch-style */
+  .neofetch{margin-top:18px}
+  .kv{display:grid;grid-template-columns:max-content 1fr;column-gap:14px;row-gap:2px}
+  .kv .k{color:var(--accent-2)}
+  .kv .v{color:var(--fg);min-width:0;word-break:break-word}
+
+  /* man page */
+  .man-head{display:flex;justify-content:space-between;gap:12px;color:var(--dim);font-size:12px}
+  .man h3{font-size:inherit;font-weight:700;color:var(--fg);margin:16px 0 4px}
+  .man p,.man .codes{margin-left:4ch}
+  .man ul{margin:0 0 0 4ch;padding-left:2ch}
+  .codes{display:grid;grid-template-columns:2ch 1fr;column-gap:12px;row-gap:2px}
+
+  /* engagement log */
+  .log{display:grid;grid-template-columns:10ch 1fr;column-gap:14px;row-gap:10px}
+  .log .t{color:var(--accent-2)}
+  .log .out{display:block;color:var(--dim)}
+
+  /* repo tree */
+  .tree .node{display:grid;grid-template-columns:25ch 1fr;column-gap:2ch}
+  .tree .p{white-space:pre}
+  .tree .c{color:var(--dim)}
+
+  /* capabilities */
+  .cap{display:grid;grid-template-columns:22ch 1fr 9ch;column-gap:16px;padding:8px 0;border-top:1px dashed var(--line)}
+  .cap.head{border-top:none;padding-top:0;color:var(--dimmer);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+  .cap .a{color:var(--accent-2)}
+  .cap .w{color:var(--dim);text-align:right}
+
+  /* roster */
+  .yaml{margin:10px 0 14px;white-space:pre;overflow-x:auto}
+
+  /* inline live cursor */
+  .cursor{display:inline-block;width:8px;height:1em;background:var(--accent);vertical-align:-2px;animation:blink 1.05s steps(2) infinite;margin-left:2px}
+  @keyframes blink{50%{opacity:0}}
+
+  /* status bar */
+  .statusbar{display:flex;justify-content:space-between;gap:10px;padding:8px 14px;border-top:1px solid var(--line);background:#0a0e0d;color:var(--dim);font-size:11px;flex-wrap:wrap}
+  .statusbar .left,.statusbar .right{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);display:inline-block;margin-right:6px}
+
+  .footer{color:var(--dimmer);text-align:center;font-size:11px;margin:18px 0 30px;padding:0 14px}
+
+  /* subtle grain */
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:3px 3px;mix-blend-mode:overlay;z-index:1}
+  .shell{position:relative;z-index:2}
+
+  /* ============ MOBILE ============ */
+  @media screen and (max-width:780px){
+    html,body{font-size:13.5px;line-height:1.6}
+    .shell{margin:0;padding:0}
+    .term{border-radius:0;border-left:none;border-right:none;border-top:none;box-shadow:none}
+    .term-bar{padding:9px 12px;gap:8px}
+    .term-title{font-size:11px}
+    .term-tabs{display:none}
+    .term-body{padding:18px 14px 28px;min-height:0}
+    section{margin:24px 0}
+    .block{margin:10px 0}
+    .box{padding:12px 14px}
+    .row{flex-wrap:wrap;gap:6px}
+    .row .prompt-line{white-space:nowrap}
+
+    /* 46-column diagram: scale the font to fit, leaving room for glyph advances rounded to whole pixels */
+    .diagram{font-size:clamp(8px,calc((100vw - 53px) / 27.6),13px)}
+
+    .kv{grid-template-columns:1fr;row-gap:8px}
+    .kv .k{font-size:11px;text-transform:uppercase;letter-spacing:.06em;opacity:.8;margin-top:4px}
+    .kv .k:first-child{margin-top:0}
+
+    .man-head .mid{display:none}
+    .man p,.man .codes{margin-left:0}
+    .man ul{margin-left:0}
+
+    .log{grid-template-columns:1fr;row-gap:2px}
+    .log .t{margin-top:10px}
+    .log .t:first-child{margin-top:0}
+
+    /* tree comments drop under their path; the border carries the tree's vertical line */
+    .tree .node{grid-template-columns:1fr}
+    .tree .c{margin-left:calc(.5ch - .5px);padding:0 0 4px 3.5ch;border-left:1px solid var(--dimmer)}
+    .tree .node.last .c{border-left-color:transparent}
+
+    .cap{grid-template-columns:1fr auto;row-gap:2px}
+    .cap .a{grid-row:1;grid-column:1}
+    .cap .w{grid-row:1;grid-column:2}
+    .cap .d{grid-row:2;grid-column:1 / -1}
+    .cap.head{display:none}
+    .cap.head + .cap{border-top:none;padding-top:0}
+
+    .yaml{font-size:12px}
+
+    .statusbar{flex-direction:column;align-items:flex-start;font-size:10.5px;gap:4px;padding:8px 12px}
+    .statusbar .left,.statusbar .right{gap:10px}
+  }
+  @media screen and (max-width:380px){
+    .term-body{padding:16px 12px 24px}
+    .yaml{font-size:11px}
+  }
+
+  /* ============ PRINT ============ */
+  @media print{
+    @page{margin:14mm}
+    :root{--bg:#fff;--panel:#fff;--inset:#fff;--line:#cfd6d2;--fg:#111;--dim:#46514c;--dimmer:#6d7772;--accent:#0b6b47;--accent-2:#8a5300;--warn:#a33a1f;--link:#0b4f8a;--str:#2f6b1f;--num:#5b3fa8}
+    html,body{font-size:11px}
+    body::before,.term-bar,.statusbar,.cursor{display:none}
+    .shell{max-width:none;margin:0;padding:0}
+    .term{border:none;border-radius:0;box-shadow:none}
+    .term-body{padding:0;min-height:0}
+    .diagram{font-size:11px}
+    .diagram .arch{background:none}
+    .box,.cap,.man li,.tree .node{break-inside:avoid}
+    a{border-bottom:none}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="term">
+    <div class="term-bar">
+      <div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+      <div class="term-title"><a href="mailto:me@aaim.sh">me@aaim.sh</a> — ~/team — zsh — 132×42</div>
+      <div class="term-tabs">
+        <a class="tab" href="../">~</a>
+        <span class="tab active">team</span>
+        <span class="tab">+</span>
+      </div>
+    </div>
+
+    <main class="term-body">
+      <h1 class="sr">aaim.sh/team — solution architects who lead enterprise squads</h1>
+
+      <!-- topology / banner -->
+      <div class="row">
+        <span class="prompt-line"><span class="prompt"><a href="mailto:me@aaim.sh">me@aaim.sh</a></span> <span class="arrow">~</span> <span class="path">$</span></span>
+        <span>cd team &amp;&amp; cat topology.txt</span>
+      </div>
+
+      <pre class="diagram" role="img" aria-label="Your program has three squads: payments, identity and channels. Each squad keeps its own product owner, engineering manager, QA and developers, and gets one of our architects. All three squads connect to your core systems, payment rails and government platforms.">
+                 <span class="em">your program</span>
+                       <span class="ln">|</span>
+       <span class="ln">+---------------+---------------+</span>
+       <span class="ln">|               |               |</span>
+<span class="key">squad/payments</span>  <span class="key">squad/identity</span>  <span class="key">squad/channels</span>
+ po · em · qa    po · em · qa    po · em · qa
+  dev dev dev     dev dev dev     dev dev dev
+ <span class="arch">[ architect ]</span>   <span class="arch">[ architect ]</span>   <span class="arch">[ architect ]</span>
+       <span class="ln">|               |               |</span>
+       <span class="ln">+---------------+---------------+</span>
+                       <span class="ln">|</span>
+ core systems · payment rails · gov platforms</pre>
+      <div class="ascii-sub">one of us in each squad. everything else in the picture is yours.</div>
+
+      <div class="neofetch">
+        <div class="kv">
+          <span class="k">Team</span><span class="v">aaim.sh/team</span>
+          <span class="k">Lead</span><span class="v"><a href="../">Abdulailah Al Hussayen</a> <span class="dim">· CTO @ Jaras.io</span></span>
+          <span class="k">Seat</span><span class="v">solution architect, one per squad</span>
+          <span class="k">Domains</span><span class="v">fintech · telecom · government · hospitality</span>
+          <span class="k">Stack</span><span class="v">Python · Django · Go · Kafka · Postgres · k8s · GCP</span>
+          <span class="k">Base</span><span class="v">Riyadh <span class="dim">· UTC+03 · on-site or remote</span></span>
+          <span class="k">Languages</span><span class="v">Arabic · English</span>
+          <span class="k">Status</span><span class="v"><span class="ok">● online</span> <span class="dim">— open to enterprise programs</span></span>
+        </div>
+      </div>
+
+      <!-- cat README.md -->
+      <section>
+        <h2 class="sr">What we do</h2>
+        <div class="row">
+          <span class="prompt-line"><span class="prompt"><a href="mailto:me@aaim.sh">me@aaim.sh</a></span> <span class="arrow">~/team</span> <span class="path">$</span></span>
+          <span>cat README.md</span>
+        </div>
+        <div class="block box">
+          <p><span class="comment"># README</span></p>
+          <p>We lead delivery squads inside enterprises. One of us joins each squad as its <span class="em">solution architect</span>: writes the design down, builds the risky parts, reviews the rest, and stays until the system is live and someone on your side can run it.</p>
+          <p>We come from Saudi systems that move money, check identity, or page someone at 3 a.m. when they break: SARIE instant payments, AML screening on Kafka, single sign-on for a government authority, STC's customer-facing APIs, and a hotel platform that takes bookings around the clock.</p>
+          <p><span class="dim"># house rules: decisions in writing · riskiest path first · no launch without a tested rollback · architects write code</span></p>
+        </div>
+      </section>
+
+      <!-- man squad-architect -->
+      <section>
+        <h2 class="sr">The squad architect role</h2>
+        <div class="row">
+          <span class="prompt-line"><span class="prompt"><a href="mailto:me@aaim.sh">me@aaim.sh</a></span> <span class="arrow">~/team</span> <span class="path">$</span></span>
+          <span>man squad-architect</span>
+        </div>
+        <div class="block box man">
+          <div class="man-head"><span>SQUAD-ARCHITECT(7)</span><span class="mid">aaim.sh/team</span><span>SQUAD-ARCHITECT(7)</span></div>
+
+          <h3>NAME</h3>
+          <p>squad-architect - the engineer who answers for how a squad's system is designed, built, secured and run</p>
+
+          <h3>SYNOPSIS</h3>
+          <p><span class="ok">squad-architect</span> <span class="nw">--squad <span class="key">&lt;name&gt;</span></span> <span class="nw">[--on-site]</span> <span class="nw">[--lang ar|en]</span></p>
+
+          <h3>DESCRIPTION</h3>
+          <p>Joins one squad for the length of the program. Sits in its standups, commits to its repo, and is the person your leadership asks whether the system will hold on launch day.</p>
+
+          <h3>OWNS</h3>
+          <ul>
+            <li>the design, as architecture decision records in your repo, including the options we turned down and why</li>
+            <li>integration contracts with core systems, vendors and government platforms</li>
+            <li>non-functional requirements, agreed in numbers: p99 latency, peak TPS, availability, RPO/RTO</li>
+            <li>the security review: threat model before build, findings closed before go-live</li>
+            <li>code on the critical path: payments, identity, anything that holds personal data</li>
+            <li>production readiness: dashboards, alerts, runbooks, and a rollback someone has actually run</li>
+          </ul>
+
+          <h3>DOES NOT OWN</h3>
+          <ul>
+            <li>the backlog and its priorities. That's your product owner.</li>
+            <li>line management of your engineers</li>
+            <li>vendor selection. We write the technical evaluation; you make the call.</li>
+          </ul>
+
+          <h3>WORKS WITH</h3>
+          <ul>
+            <li><span class="em">your EA office:</span> we follow your standards, and push back in writing when one blocks delivery</li>
+            <li><span class="em">your security team:</span> they see the threat model before anything is built</li>
+            <li><span class="em">your vendors:</span> their designs and code get reviewed against the same bar as ours</li>
+          </ul>
+
+          <h3>EXIT STATUS</h3>
+          <div class="codes">
+            <span class="num">0</span><span>handed over. A named engineer on your side runs it without us.</span>
+            <span class="num">1</span><span>still needs us. We count that as unfinished work, not a renewal.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- cat engagement.log -->
+      <section>
+        <h2 class="sr">How an engagement runs</h2>
+        <div class="row">
+          <span class="prompt-line"><span class="prompt"><a href="mailto:me@aaim.sh">me@aaim.sh</a></span> <span class="arrow">~/team</span> <span class="path">$</span></span>
+          <span>cat engagement.log</span>
+        </div>
+        <div class="block box">
+          <div class="log">
+            <span class="t">w01–02</span>
+            <span>read the code, the incident history and recent postmortems. sit with ops.<span class="out"><span class="ok">→</span> current-state map and a risk list, reviewed with your leads. no proposals yet.</span></span>
+            <span class="t">w03–04</span>
+            <span>target design for the squad's scope, written as ADRs.<span class="out"><span class="ok">→</span> NFRs agreed in numbers. integration contracts drafted with the teams on the other side.</span></span>
+            <span class="t">w05+</span>
+            <span>build with the squad. riskiest integration first, while there's still time to be wrong.</span>
+            <span class="t">release</span>
+            <span>readiness review before every go-live: load test, alerts, runbooks, a rehearsed rollback.</span>
+            <span class="t">handover</span>
+            <span>starts in week one. an engineer from your side pairs with the architect from the first ADR.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- tree your-repo -->
+      <section>
+        <h2 class="sr">What stays in your repository</h2>
+        <div class="row">
+          <span class="prompt-line"><span class="prompt"><a href="mailto:me@aaim.sh">me@aaim.sh</a></span> <span class="arrow">~/team</span> <span class="path">$</span></span>
+          <span>tree your-repo --after-we-leave</span>
+        </div>
+        <div class="block box">
+          <div class="tree">
+            <div>your-repo/</div>
+            <div class="node"><span class="p"><span class="comment">├── </span><span class="ok">docs/adr/</span></span><span class="c"># decisions, with the options we turned down</span></div>
+            <div class="node"><span class="p"><span class="comment">├── </span><span class="ok">docs/architecture/</span></span><span class="c"># C4 context and container diagrams, versioned with the code</span></div>
+            <div class="node"><span class="p"><span class="comment">├── </span><span class="ok">docs/nfr.md</span></span><span class="c"># latency, throughput, availability and RPO/RTO, in numbers</span></div>
+            <div class="node"><span class="p"><span class="comment">├── </span><span class="ok">docs/threat-model.md</span></span><span class="c"># every flow that touches money, identity or personal data</span></div>
+            <div class="node"><span class="p"><span class="comment">├── </span><span class="ok">contracts/</span></span><span class="c"># OpenAPI / AsyncAPI for each integration, with examples</span></div>
+            <div class="node last"><span class="p"><span class="comment">└── </span><span class="ok">runbooks/</span></span><span class="c"># one per alert, written before go-live</span></div>
+          </div>
+          <p style="margin-top:12px"><span class="dim"># nothing important lives in a slide deck or in our heads.</span></p>
+        </div>
+      </section>
+
+      <!-- capabilities: every row needs a place it was built -->
+      <section>
+        <h2 class="sr">Capabilities and where they were built</h2>
+        <div class="row">
+          <span class="prompt-line"><span class="prompt"><a href="mailto:me@aaim.sh">me@aaim.sh</a></span> <span class="arrow">~/team</span> <span class="path">$</span></span>
+          <span>column -t capabilities.tsv</span>
+        </div>
+        <div class="block box">
+          <p><span class="dim"># each row is something one of us built and ran in production. the last column says where.</span></p>
+          <div class="caps">
+            <div class="cap head"><span>area</span><span>in production</span><span class="w">where</span></div>
+            <div class="cap"><span class="a">payments &amp; ledgers</span><span class="d">SARIE instant transfers with SAMA. Wallet ledger, idempotency keys, disputes and reversals.</span><span class="w">Tweeq</span></div>
+            <div class="cap"><span class="a">streaming &amp; AML</span><span class="d">Rules and sanctions screening on Kafka, alert review, exactly-once pipelines under regulator scrutiny.</span><span class="w">neoleap</span></div>
+            <div class="cap"><span class="a">identity &amp; access</span><span class="d">SSO across a government authority's internal systems, with hardened audit trails and access control.</span><span class="w">ITBA</span></div>
+            <div class="cap"><span class="a">gov workflows</span><span class="d">Visitor-permit reservations and automated permit issuance.</span><span class="w">ITBA</span></div>
+            <div class="cap"><span class="a">high-volume APIs</span><span class="d">Customer-facing e-channel APIs for Saudi Telecom.</span><span class="w">STC</span></div>
+            <div class="cap"><span class="a">partner integrations</span><span class="d">Two-way sync with Booking, Expedia and Agoda: idempotent reservation pipeline, conflict resolution, audit log.</span><span class="w">Jaras.io</span></div>
+            <div class="cap"><span class="a">multi-tenant SaaS</span><span class="d">PMS, payments and guest messaging for hotel operators, on call 24/7.</span><span class="w">Jaras.io</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- cat roster.yml — to add someone: copy the "- name:" block inside the <pre>, and add their rows to capabilities above -->
+      <section>
+        <h2 class="sr">Who is on the team</h2>
+        <div class="row">
+          <span class="prompt-line"><span class="prompt"><a href="mailto:me@aaim.sh">me@aaim.sh</a></span> <span class="arrow">~/team</span> <span class="path">$</span></span>
+          <span>cat roster.yml</span>
+        </div>
+        <div class="block box">
+          <p><span class="dim"># named people only. the name in the proposal is the person in your standup.</span></p>
+<pre class="yaml"><span class="comment">-</span> <span class="key">name:</span>   <span class="str">Abdulailah Al Hussayen</span>
+  <span class="key">seat:</span>   lead architect
+  <span class="key">now:</span>    CTO @ <a href="https://jaras.io">Jaras.io</a>
+  <span class="key">before:</span> Tweeq · neoleap · ITBA · STC
+  <span class="key">years:</span>  8+ in production
+  <span class="key">speaks:</span> Arabic, English
+  <span class="key">reach:</span>  <a href="mailto:me@aaim.sh">me@aaim.sh</a></pre>
+          <p><span class="dim"># open seats go to engineers who clear this bar. names are added once they sign.</span></p>
+          <ul>
+            <li>has 8+ years on backend systems that run in production</li>
+            <li>has run a system where downtime or a bad write costs real money, and carried the pager for it</li>
+            <li>has taken a design through a regulator, a security review or an external audit</li>
+            <li>still ships production code</li>
+            <li>works in Arabic and English with business owners, vendors and ops</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- fit -->
+      <section>
+        <h2 class="sr">Who this is for</h2>
+        <div class="row">
+          <span class="prompt-line"><span class="prompt"><a href="mailto:me@aaim.sh">me@aaim.sh</a></span> <span class="arrow">~/team</span> <span class="path">$</span></span>
+          <span>./fit --check &lt;your-program&gt;</span>
+        </div>
+        <div class="block grid2">
+          <div class="box">
+            <p><span class="ok">✓ good fit</span></p>
+            <ul>
+              <li>a program with several squads, a hard date, and systems you can't switch off to deploy</li>
+              <li>integrations with payment rails, government platforms, or a core system older than some of your engineers</li>
+              <li>you have engineers and product owners, and you're missing the person who owns the design and answers for it in production</li>
+            </ul>
+          </div>
+          <div class="box">
+            <p><span class="err">✗ not a fit</span></p>
+            <ul>
+              <li>architecture for a tender that nobody plans to build</li>
+              <li>headcount without decision rights. An architect who can't decide is a note-taker.</li>
+              <li>fixed-scope delivery handed to a vendor end to end. That's a systems integrator's job.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- engage -->
+      <section>
+        <h2 class="sr">How to start</h2>
+        <div class="row">
+          <span class="prompt-line"><span class="prompt"><a href="mailto:me@aaim.sh">me@aaim.sh</a></span> <span class="arrow">~/team</span> <span class="path">$</span></span>
+          <span>./engage --org &lt;your-org&gt;</span>
+        </div>
+        <div class="block box">
+          <p><span class="comment"># send four things:</span></p>
+          <ol>
+            <li>the program, and who sponsors it</li>
+            <li>how many squads, and what each one builds</li>
+            <li>the systems it has to integrate with</li>
+            <li>the date it has to be live</li>
+          </ol>
+          <p style="margin:10px 0 14px"><span class="dim"># you'll get back a name and a plan for the first two weeks.</span></p>
+          <p style="margin:0 0 4px"><span class="key">email </span> <span class="dim">→</span> <a href="mailto:me@aaim.sh?subject=Squad%20architects%20for%20our%20program&amp;body=Program%20and%20sponsor%3A%0ASquads%20and%20what%20each%20builds%3A%0ASystems%20to%20integrate%20with%3A%0ALive%20date%3A%0A">me@aaim.sh</a></p>
+          <p><span class="key">phone </span> <span class="dim">→</span> <a href="tel:+966550401836">+966 550 401 836</a></p>
+        </div>
+      </section>
+
+      <!-- exit -->
+      <div class="row" style="margin-top:18px">
+        <span class="prompt-line"><span class="prompt"><a href="mailto:me@aaim.sh">me@aaim.sh</a></span> <span class="arrow">~/team</span> <span class="path">$</span></span>
+        <span><span class="dim">_</span><span class="cursor"></span></span>
+      </div>
+    </main>
+
+    <div class="statusbar">
+      <div class="left">
+        <span><span class="pulse"></span>online</span>
+        <span>main ✓ clean</span>
+        <span>UTF-8</span>
+      </div>
+      <div class="right">
+        <span>aaim.sh/team</span>
+        <span>Riyadh · UTC+03</span>
+        <span id="clock">--:--:--</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">© <span id="yr"></span> Abdulailah Al Hussayen · <a href="../">aaim.sh</a> · Riyadh</div>
+</div>
+
+<script>
+  // live clock in Riyadh
+  function tick(){
+    const d = new Date();
+    const fmt = new Intl.DateTimeFormat('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false,timeZone:'Asia/Riyadh'});
+    document.getElementById('clock').textContent = fmt.format(d);
+  }
+  tick(); setInterval(tick,1000);
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
