@@ -192,23 +192,74 @@
     .btn{transition:none}
   }
 
-  /* ============ PRINT ============ */
+  /* ============ PRINT: 16:9 landscape, one section per page ============ */
   @media print{
-    @page{margin:14mm}
-    /* keep the fills: the company tags are light text on a dark pill */
-    body{background:#fff;font-size:11pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-    section{padding-top:36px}
-    .hero{padding-top:4px}
-    .hero h1{font-size:60px;margin:18px 0 14px}
-    h2{font-size:36px;break-after:avoid}
-    .squads{margin-top:28px}
-    .ticker,.top nav,.hero .actions,.seat .btn{display:none}
-    .btn,.squad,.note,.keep,.person,.fit .yes{box-shadow:none}
-    .squad,.note,.keep,.person,.seat,.fit > div,.built li,.steps li,.do li{break-inside:avoid}
-    .cta{background:#fff;color:var(--ink);border:2px solid var(--ink)}
-    .cta .after{color:var(--ink-2)}
-    .cta ol li::marker{color:var(--ink)}
-    .cta .btn,.cta .btn.ghost{color:var(--ink);border-color:var(--ink)}
+    @page{size:13.333in 7.5in;margin:0}
+    html,body{background:var(--paper)}
+    /* keep fills and shadows: the design depends on them (e.g. light text on dark tags) */
+    body{font-size:16px;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact;counter-reset:page-no}
+    .top,.ticker,.foot,.hero .actions,.seat .btn{display:none}
+
+    main > section.wrap{position:relative;width:1280px;height:720px;max-width:none;margin:0;padding:52px 72px 64px;overflow:hidden;break-after:page;counter-increment:page-no}
+    main > section.wrap:last-child{break-after:auto}
+    main > section.wrap::before,main > section.wrap::after{position:absolute;bottom:24px;font-size:13px;font-weight:700;color:var(--ink-2)}
+    main > section.wrap::before{content:"aaim.sh/team";left:72px}
+    main > section.wrap::after{content:counter(page-no);right:72px}
+    h2{font-size:48px;max-width:none}
+    .intro{font-size:18px;margin-top:10px;max-width:none}
+
+    main > section.hero{padding-top:56px}
+    .hero h1{font-size:92px;margin:22px 0 18px}
+    .lead{font-size:20px;max-width:780px}
+    .squads{margin-top:36px;gap:24px}
+    .caption{margin-top:18px;font-size:15px}
+
+    .do-grid{grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:40px;margin-top:28px}
+    .do{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,auto);grid-auto-flow:column;gap:20px 32px}
+    .do li{padding-left:50px;font-size:15px}
+    .do li::before{width:34px;height:34px;font-size:15px}
+    .do strong{font-size:18px}
+    .note{padding:24px 22px 22px}
+    .note h3{font-size:21px}
+    .note ul{font-size:15px;gap:8px}
+
+    .steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;margin-top:26px;padding-top:22px}
+    .steps li{display:block;padding:0;border:0}
+    .steps h3{font-size:20px;margin:14px 0 6px}
+    .steps p{font-size:15px}
+    .keep{margin-top:30px;padding:22px 26px}
+    .keep h3{font-size:20px}
+    .files{margin:12px 0}
+    .files li{font-size:14px;padding:4px 12px}
+    .keep p{font-size:15px;max-width:none}
+
+    .built{display:grid;grid-template-columns:1fr 1fr;column-gap:48px;margin-top:22px}
+    .built li{grid-template-columns:minmax(0,1fr) auto;align-content:start;gap:4px 16px;padding:13px 0}
+    .built h3{grid-row:1;grid-column:1;font-size:17px}
+    .built .where{grid-row:1;grid-column:2;font-size:12px;padding:2px 10px}
+    .built p{grid-row:2;grid-column:1 / -1;font-size:14.5px}
+    .stack{margin-top:18px;font-size:14px}
+    .stack span{font-size:13px;padding:2px 10px}
+
+    .who{margin-top:26px;gap:32px}
+    .person,.seat{padding:24px 28px}
+    .avatar{width:52px;height:52px;font-size:20px;margin-bottom:12px}
+    .person h3,.seat h3{font-size:24px}
+    .facts{font-size:15px}
+    .seat ul{margin:12px 0 0;font-size:15px}
+
+    .fit{margin-top:40px;gap:36px}
+    .fit > div{padding:34px 36px}
+    .fit h3{font-size:28px;margin-bottom:20px}
+    .fit ul{gap:18px}
+    .fit li{font-size:19px;padding-left:44px}
+    .fit li::before{width:28px;height:28px}
+
+    main > section#contact{background:var(--ink);color:var(--paper)}
+    main > section#contact::before,main > section#contact::after{color:#d8cfbf}
+    .cta{background:none;border-radius:0;padding:0}
+    .cta h2{font-size:64px}
+    .cta ol{font-size:19px}
   }
 </style>
 </head>
