@@ -25,6 +25,7 @@
     --sun:#ffd02e;
     --go:#16a35a;
     --shadow:4px 4px 0 var(--ink);
+    --check:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%2316130e' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -117,21 +118,24 @@
   .tags{justify-self:end;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
   .where{padding:3px 12px;border-radius:999px;background:var(--ink);color:var(--paper);font-weight:700;font-size:14px;white-space:nowrap}
 
-  /* who */
-  .who{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px;align-items:start}
-  .person,.seat{border:2px solid var(--ink);border-radius:18px;padding:28px}
-  .person{background:var(--card);box-shadow:var(--shadow)}
-  .seat{border-style:dashed}
+  /* who: the three cards share row tracks (subgrid), so their sections line up and they end at the same height */
+  .who{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(5,auto);gap:0 24px;margin-top:40px}
+  .person,.hire{grid-row:span 5;display:grid;grid-template-rows:subgrid;row-gap:0;border:2px solid var(--ink);border-radius:18px;padding:28px;box-shadow:var(--shadow)}
+  .person{background:var(--card)}
+  .hire{background:var(--sun)}
   .avatar{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--ink);background:var(--sun);font-weight:800;font-size:24px;margin-bottom:16px}
-  .seat .avatar{background:var(--card);border-style:dashed}
-  .person h3,.seat h3{font-size:26px;letter-spacing:-.025em}
-  .role{color:var(--ink-2);font-weight:600;margin-top:2px}
-  .facts{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:18px 0 0}
+  .hire .avatar{background:var(--card) var(--check) center/28px no-repeat}
+  .person h3,.hire h3{font-size:26px;line-height:1.1;letter-spacing:-.025em}
+  .role{color:var(--ink-2);font-weight:600;margin-top:8px}
+  .hire .role{color:var(--ink)}
+  .facts{display:grid;grid-template-columns:max-content 1fr;align-content:start;gap:6px 16px;margin:18px 0 0;font-size:16px}
   .facts dt{color:var(--ink-2)}
   .facts dd{margin:0;font-weight:600}
-  .links{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;font-weight:600}
-  .seat p{color:var(--ink-2);margin-top:6px}
-  .seat ul{margin:14px 0 24px;padding-left:20px;display:grid;gap:8px}
+  .links{display:flex;flex-wrap:wrap;align-self:end;gap:18px;margin-top:18px;font-weight:600}
+  .hire ul{list-style:none;margin:18px 0 0;padding:0;display:grid;align-content:start;gap:9px;font-size:16px}
+  .hire li{position:relative;padding-left:34px}
+  .hire li::before{content:"";position:absolute;left:0;top:1px;width:22px;height:22px;border:2px solid var(--ink);border-radius:50%;background:var(--card) var(--check) center/13px no-repeat}
+  .cleared{align-self:end;margin-top:18px;font-weight:800}
 
   /* fit */
   .fit{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
@@ -141,7 +145,7 @@
   .fit ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
   .fit li{position:relative;padding-left:40px}
   .fit li::before{content:"";position:absolute;left:0;top:1px;width:26px;height:26px;border:2px solid var(--ink);border-radius:50%;background:center/15px no-repeat}
-  .fit .yes li::before{background-color:var(--sun);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%2316130e' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+  .fit .yes li::before{background-color:var(--sun);background-image:var(--check)}
   .fit .no li::before{background-color:var(--card);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7l10 10M17 7L7 17' fill='none' stroke='%2316130e' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E")}
 
   /* contact */
@@ -179,7 +183,9 @@
     .built .tags{grid-row:1;grid-column:2}
     .built p{grid-row:2;grid-column:1 / -1}
     .who,.fit{grid-template-columns:1fr}
-    .keep,.person,.seat,.fit > div{padding:22px}
+    .who{grid-template-rows:none;gap:20px}
+    .person,.hire{grid-row:auto;display:block}
+    .keep,.person,.hire,.fit > div{padding:22px}
     .cta{padding:40px 24px;border-radius:22px}
     .cta ol,.cta .send{font-size:18px}
   }
@@ -196,7 +202,7 @@
     html,body{background:var(--paper)}
     /* keep fills and shadows: the design depends on them (e.g. light text on dark tags) */
     body{font-size:16px;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact;counter-reset:page-no}
-    .top,.ticker,.foot,.hero .actions,.seat .btn{display:none}
+    .top,.ticker,.foot,.hero .actions{display:none}
 
     main > section.wrap{position:relative;width:1280px;height:720px;max-width:none;margin:0;padding:52px 72px 64px;overflow:hidden;break-after:page;counter-increment:page-no}
     main > section.wrap:last-child{break-after:auto}
@@ -241,12 +247,17 @@
     .where{font-size:12px;padding:2px 10px}
     .built p{grid-row:2;grid-column:1 / -1;font-size:14.5px}
 
-    .who{margin-top:26px;gap:24px}
-    .person,.seat{padding:24px 28px}
-    .avatar{width:52px;height:52px;font-size:20px;margin-bottom:12px}
-    .person h3,.seat h3{font-size:24px}
-    .facts{font-size:15px}
-    .seat ul{margin:12px 0 0;font-size:15px}
+    .who{margin-top:20px;gap:0 24px}
+    .person,.hire{padding:20px 24px}
+    .avatar{width:44px;height:44px;font-size:17px;margin-bottom:10px}
+    .person h3,.hire h3{font-size:22px}
+    .hire .avatar{background-size:20px}
+    .role{font-size:15px;margin-top:6px}
+    .facts{font-size:14.5px;margin-top:14px;gap:5px 14px}
+    .hire ul{margin:14px 0 0;font-size:14.5px;gap:6px}
+    .hire li{padding-left:30px}
+    .hire li::before{width:20px;height:20px;top:1px}
+    .links,.cleared{margin-top:14px}
 
     .fit{margin-top:40px;gap:36px}
     .fit > div{padding:34px 36px}
@@ -366,18 +377,19 @@
     </ul>
   </section>
 
-  <!-- to add someone: copy a .person article, and add their rows to "Where we've done this before" -->
+  <!-- to add someone: copy a .person article, give .who one more column, and add their rows to "Where we've done this before" -->
   <section class="wrap" id="who">
     <h2>Who you'd get</h2>
     <p class="intro">Named people only. The name in the proposal is the person in your standup.</p>
     <div class="who">
       <article class="person">
         <div class="avatar" aria-hidden="true">AH</div>
-        <h3>Abdulailah Al Hussayen</h3>
+        <h3>Abdulailah<br>Al Hussayen</h3>
         <p class="role">Lead architect<br>CTO at Jaras.io</p>
         <dl class="facts">
           <dt>Before</dt><dd>Tweeq, neoleap, ITBA, STC</dd>
           <dt>Experience</dt><dd>8+ years in production</dd>
+          <dt>Certified</dt><dd>CKAD</dd>
           <dt>Works in</dt><dd>Arabic, English</dd>
           <dt>Based in</dt><dd>Riyadh</dd>
         </dl>
@@ -385,7 +397,7 @@
       </article>
       <article class="person">
         <div class="avatar" aria-hidden="true">AA</div>
-        <h3>Albraa Alfhaid</h3>
+        <h3>Albraa<br>Alfhaid</h3>
         <p class="role">Product &amp; transformation lead<br>Co-founder of Joaan</p>
         <dl class="facts">
           <dt>Before</dt><dd>urpay (neoleap), STC Pay, STC</dd>
@@ -396,17 +408,18 @@
         </dl>
         <p class="links"><a href="https://linkedin.com/in/albraa-alfhaid">LinkedIn</a></p>
       </article>
-      <article class="seat">
-        <div class="avatar" aria-hidden="true">?</div>
-        <h3>This seat's open</h3>
-        <p>Names go up when people sign. Here's the bar:</p>
+      <article class="hire">
+        <div class="avatar" aria-hidden="true"></div>
+        <h3>How we<br>pick people</h3>
+        <p class="role">Our hiring bar.<br>Nobody joins without all five:</p>
         <ul>
-          <li>You have 8+ years delivering platforms that run in production</li>
-          <li>You've been accountable for something where downtime or a bad release costs real money</li>
-          <li>You've taken something through a regulator, a security review or an external audit</li>
-          <li>You work in Arabic and English</li>
+          <li>Has 5+ years delivering platforms in production</li>
+          <li>Has led a squad from requirements to go-live</li>
+          <li>Has answered for systems where downtime costs real money</li>
+          <li>Has been through a regulator, a security review or an audit</li>
+          <li>Works in Arabic and English</li>
         </ul>
-        <a class="btn sm" href="mailto:me@aaim.sh?subject=Open%20seat%20at%20Impactors">Sounds like you? Say hi</a>
+        <p class="cleared">Everyone on this page cleared all five.</p>
       </article>
     </div>
   </section>
