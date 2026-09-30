@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Team — aaim.sh</title>
-<meta name="description" content="Senior engineers who lead enterprise delivery squads as their solution architect. We write the design down, build the risky parts, and stay until your team can run it." />
+<title>Impactors — solution architects for enterprise squads</title>
+<meta name="description" content="Impactors leads enterprise delivery squads as their solution architects. We write the design down, steer the squad through the risky parts, and stay until your team can run it without us." />
 <meta name="theme-color" content="#fff7e8" />
 <meta name="color-scheme" content="light" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://aaim.sh/team/" />
-<meta property="og:title" content="One of us in every squad — aaim.sh/team" />
-<meta property="og:description" content="Senior engineers who lead enterprise delivery squads as their solution architect. We write the design down, build the risky parts, and stay until your team can run it." />
+<meta property="og:title" content="Impactors — one of us in every squad" />
+<meta property="og:description" content="Impactors leads enterprise delivery squads as their solution architects. We write the design down, steer the squad through the risky parts, and stay until your team can run it without us." />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23ffd02e' stroke='%2316130e' stroke-width='3'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,8 +48,8 @@
 
   /* top bar */
   .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:22px;padding-bottom:22px}
-  .brand{font-weight:800;font-size:21px;letter-spacing:-.02em;text-decoration:none}
-  .brand span{background:var(--sun);padding:0 6px;border-radius:6px;margin-left:1px}
+  .brand{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:22px;letter-spacing:-.02em;text-decoration:none}
+  .brand i{width:16px;height:16px;border-radius:50%;background:var(--sun);border:2px solid var(--ink)}
   .top nav{display:flex;align-items:center;gap:20px;font-weight:600;font-size:16px}
 
   /* hero */
@@ -114,12 +114,11 @@
   .built li{display:grid;grid-template-columns:230px minmax(0,1fr) auto;gap:6px 28px;align-items:baseline;padding:20px 0;border-bottom:2px solid var(--ink)}
   .built h3{font-size:20px;letter-spacing:-.015em}
   .built p{color:var(--ink-2)}
-  .where{justify-self:end;padding:3px 12px;border-radius:999px;background:var(--ink);color:var(--paper);font-weight:700;font-size:14px;white-space:nowrap}
-  .stack{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:8px;color:var(--ink-2);font-weight:600}
-  .stack span{padding:3px 12px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink);font-size:15px}
+  .tags{justify-self:end;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
+  .where{padding:3px 12px;border-radius:999px;background:var(--ink);color:var(--paper);font-weight:700;font-size:14px;white-space:nowrap}
 
   /* who */
-  .who{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px;align-items:start}
+  .who{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px;align-items:start}
   .person,.seat{border:2px solid var(--ink);border-radius:18px;padding:28px}
   .person{background:var(--card);box-shadow:var(--shadow)}
   .seat{border-style:dashed}
@@ -164,7 +163,6 @@
   @media screen and (max-width:760px){
     body{font-size:17px}
     .wrap{padding-left:20px;padding-right:20px}
-    .top nav .text-link{display:none}
     .hero{padding-top:32px}
     .squads{grid-template-columns:1fr;gap:18px;margin-top:44px}
     .ticker{padding:40px 0;margin-top:28px}
@@ -178,7 +176,7 @@
     .steps h3{font-size:22px}
     .built li{grid-template-columns:minmax(0,1fr) auto}
     .built h3{grid-row:1;grid-column:1}
-    .built .where{grid-row:1;grid-column:2}
+    .built .tags{grid-row:1;grid-column:2}
     .built p{grid-row:2;grid-column:1 / -1}
     .who,.fit{grid-template-columns:1fr}
     .keep,.person,.seat,.fit > div{padding:22px}
@@ -203,7 +201,9 @@
     main > section.wrap{position:relative;width:1280px;height:720px;max-width:none;margin:0;padding:52px 72px 64px;overflow:hidden;break-after:page;counter-increment:page-no}
     main > section.wrap:last-child{break-after:auto}
     main > section.wrap::before,main > section.wrap::after{position:absolute;bottom:24px;font-size:13px;font-weight:700;color:var(--ink-2)}
-    main > section.wrap::before{content:"aaim.sh/team";left:72px}
+    main > section.wrap::before{content:"Impactors";left:72px}
+    /* the cover carries the name large, top right, with the favicon's yellow ring */
+    main > section.hero::before{top:54px;bottom:auto;left:auto;right:72px;font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--ink);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23ffd02e' stroke='%2316130e' stroke-width='3'/%3E%3C/svg%3E") 0 50%/22px 22px no-repeat;padding-left:32px}
     main > section.wrap::after{content:counter(page-no);right:72px}
     h2{font-size:48px;max-width:none}
     .intro{font-size:18px;margin-top:10px;max-width:none}
@@ -234,14 +234,14 @@
     .keep p{font-size:15px;max-width:none}
 
     .built{display:grid;grid-template-columns:1fr 1fr;column-gap:48px;margin-top:22px}
-    .built li{grid-template-columns:minmax(0,1fr) auto;align-content:start;gap:4px 16px;padding:13px 0}
+    .built li{grid-template-columns:minmax(0,1fr) auto;align-content:start;gap:4px 16px;padding:11px 0}
+    .built li:first-child{grid-column:1 / -1}
     .built h3{grid-row:1;grid-column:1;font-size:17px}
-    .built .where{grid-row:1;grid-column:2;font-size:12px;padding:2px 10px}
+    .built .tags{grid-row:1;grid-column:2}
+    .where{font-size:12px;padding:2px 10px}
     .built p{grid-row:2;grid-column:1 / -1;font-size:14.5px}
-    .stack{margin-top:18px;font-size:14px}
-    .stack span{font-size:13px;padding:2px 10px}
 
-    .who{margin-top:26px;gap:32px}
+    .who{margin-top:26px;gap:24px}
     .person,.seat{padding:24px 28px}
     .avatar{width:52px;height:52px;font-size:20px;margin-bottom:12px}
     .person h3,.seat h3{font-size:24px}
@@ -265,9 +265,8 @@
 </head>
 <body>
 <header class="wrap top">
-  <a class="brand" href="./">aaim.sh<span>/team</span></a>
+  <a class="brand" href="./"><i aria-hidden="true"></i>Impactors</a>
   <nav>
-    <a class="text-link" href="../">aaim.sh</a>
     <a class="btn sm sun" href="#contact">Talk to us</a>
   </nav>
 </header>
@@ -276,7 +275,7 @@
   <section class="wrap hero">
     <span class="sticker"><span class="dot" aria-hidden="true"></span>Riyadh · taking on new programs</span>
     <h1>One of us in<br> <span class="hl">every squad</span>.</h1>
-    <p class="lead">We're senior engineers who lead enterprise delivery squads as their solution architect. We write the design down, build the risky parts ourselves, and stick around until it's live and your team can run it without us.</p>
+    <p class="lead">We lead enterprise delivery squads as their solution architects. We write the design down, steer the squad through the risky parts, and stick around until it's live and your team can run it without us.</p>
     <div class="actions">
       <a class="btn sun" href="#contact">Tell us about your program <span aria-hidden="true">→</span></a>
       <a class="btn" href="#how">How it works <span aria-hidden="true">↓</span></a>
@@ -299,31 +298,32 @@
     <p class="caption">↑ One of us per squad. Everyone else stays yours.</p>
   </section>
 
-  <!-- decorative: repeats the "built and ran" list below -->
+  <!-- decorative: repeats the "Where we've done this before" list below -->
   <div class="ticker" aria-hidden="true">
     <div class="band">
       <div class="track">
-        <div class="group"><span>SARIE instant payments</span><i></i><span>AML on Kafka</span><i></i><span>Government SSO</span><i></i><span>STC e-channel APIs</span><i></i><span>Booking / Expedia / Agoda sync</span><i></i><span>Hotel SaaS, on call 24/7</span><i></i><span>Arabic &amp; English</span><i></i></div>
-        <div class="group"><span>SARIE instant payments</span><i></i><span>AML on Kafka</span><i></i><span>Government SSO</span><i></i><span>STC e-channel APIs</span><i></i><span>Booking / Expedia / Agoda sync</span><i></i><span>Hotel SaaS, on call 24/7</span><i></i><span>Arabic &amp; English</span><i></i></div>
+        <div class="group"><span>Public Investment Fund</span><i></i><span>SARIE instant payments</span><i></i><span>urpay: 3M+ users in year one</span><i></i><span>SAMA open banking license</span><i></i><span>AML screening</span><i></i><span>Government SSO</span><i></i><span>Merchant onboarding: 3 days to 3 minutes</span><i></i><span>Booking / Expedia / Agoda sync</span><i></i><span>Arabic &amp; English</span><i></i></div>
+        <div class="group"><span>Public Investment Fund</span><i></i><span>SARIE instant payments</span><i></i><span>urpay: 3M+ users in year one</span><i></i><span>SAMA open banking license</span><i></i><span>AML screening</span><i></i><span>Government SSO</span><i></i><span>Merchant onboarding: 3 days to 3 minutes</span><i></i><span>Booking / Expedia / Agoda sync</span><i></i><span>Arabic &amp; English</span><i></i></div>
       </div>
     </div>
   </div>
 
   <section class="wrap" id="what">
     <h2>Here's what we actually do</h2>
-    <p class="intro">Your architect joins one squad for the whole program. Same standups, same repo, same deadline.</p>
+    <p class="intro">Your architect joins one squad for the whole program. Same standups, same deadline.</p>
     <div class="do-grid">
       <ol class="do">
-        <li><strong>Write the design down.</strong>Every decision goes in your repo as an ADR, with the options we turned down and why.</li>
+        <li><strong>Turn the business ask into requirements.</strong>We run the workshops with your business owners and write requirements your product owner can put straight into the backlog.</li>
+        <li><strong>Write the design down.</strong>Every decision gets written up as an ADR, with the options we turned down and why.</li>
         <li><strong>Pin the numbers.</strong>p99 latency, peak TPS, availability, RPO/RTO. Agreed with the business before anyone builds.</li>
         <li><strong>Own the integrations.</strong>Contracts with your core systems, vendors and government platforms, worked out with the team on the other side.</li>
-        <li><strong>Build the scary parts.</strong>Payments, identity, anything holding personal data. We write that code ourselves.</li>
-        <li><strong>Get it through security.</strong>Your security team sees the threat model before we build, and findings are closed before go-live.</li>
-        <li><strong>Make it boring to run.</strong>Dashboards, alerts, runbooks, and a rollback someone has actually tried.</li>
+        <li><strong>Get it through security.</strong>Your security team sees the threat model before anything is built, and findings are closed before go-live.</li>
+        <li><strong>Make it boring to run.</strong>We don't sign off on go-live until dashboards, alerts, runbooks and a tested rollback are in place.</li>
       </ol>
       <aside class="note">
         <h3>Stuff we don't do</h3>
         <ul>
+          <li>Write your code. Your engineers build it; we make sure it's the right thing, built the right way.</li>
           <li>Run your backlog. That's your product owner's job.</li>
           <li>Manage your people.</li>
           <li>Pick your vendors. We write the technical evaluation, you make the call.</li>
@@ -336,36 +336,37 @@
   <section class="wrap" id="how">
     <h2>How it goes</h2>
     <ol class="steps">
-      <li><span class="when">Weeks 1–2</span><div><h3>Listen first</h3><p>We read the code, the incident history and your recent postmortems, and sit with ops. You get a map of what exists and a list of risks. No proposals yet.</p></div></li>
-      <li><span class="when">Weeks 3–4</span><div><h3>Decide on paper</h3><p>Target design as ADRs, NFRs in numbers, and integration contracts drafted with the teams on the other side.</p></div></li>
-      <li><span class="when">Week 5 on</span><div><h3>Build</h3><p>Riskiest integration first, while there's still time to be wrong.</p></div></li>
+      <li><span class="when">Weeks 1–2</span><div><h3>Listen first</h3><p>We go through the current architecture, the incident history and your recent postmortems, and sit with the business and ops. You get a map of what exists and a list of risks. No proposals yet.</p></div></li>
+      <li><span class="when">Weeks 3–4</span><div><h3>Decide on paper</h3><p>Requirements and target design as ADRs, NFRs in numbers, and integration contracts drafted with the teams on the other side.</p></div></li>
+      <li><span class="when">Week 5 on</span><div><h3>Steer the build</h3><p>Your squad builds; we keep it on the design. Riskiest integration first, while there's still time to be wrong.</p></div></li>
       <li><span class="when">Every release</span><div><h3>Prove it</h3><p>Load test, alerts, runbooks and a rehearsed rollback before anything goes live.</p></div></li>
       <li><span class="when">From day one</span><div><h3>Hand it over</h3><p>An engineer from your side pairs with the architect from the first ADR, so there's no big handover at the end.</p></div></li>
     </ol>
     <div class="keep">
-      <h3>What stays in your repo</h3>
-      <ul class="files"><li>ADRs</li><li>C4 diagrams</li><li>NFR sheet</li><li>Threat model</li><li>OpenAPI / AsyncAPI contracts</li><li>Runbooks</li></ul>
+      <h3>What you keep when we leave</h3>
+      <ul class="files"><li>Requirements</li><li>ADRs</li><li>C4 diagrams</li><li>NFR sheet</li><li>Threat model</li><li>OpenAPI / AsyncAPI contracts</li><li>Runbooks</li></ul>
       <p>Nothing important lives in a slide deck or in our heads. <strong>If the system still needs us after handover, we count that as unfinished work, not a renewal.</strong></p>
     </div>
   </section>
 
-  <!-- every row needs a place it was built; add a new member's rows here -->
+  <!-- every row names where it was delivered; add a new member's rows here -->
   <section class="wrap" id="built">
-    <h2>Stuff we've built and kept running</h2>
-    <p class="intro">Every row is something one of us built and ran in production. The tag says where.</p>
+    <h2>Where we've done this before</h2>
+    <p class="intro">Every row is something one of us delivered. The tags say where.</p>
     <ul class="built">
-      <li><h3>Payments &amp; ledgers</h3><p>SARIE instant transfers with SAMA. Wallet ledger, idempotency keys, disputes and reversals.</p><span class="where">Tweeq</span></li>
-      <li><h3>Streaming &amp; AML</h3><p>Rules and sanctions screening on Kafka, alert review, exactly-once pipelines under regulator scrutiny.</p><span class="where">neoleap</span></li>
-      <li><h3>Identity &amp; access</h3><p>SSO across a government authority's internal systems, with hardened audit trails and access control.</p><span class="where">ITBA</span></li>
-      <li><h3>Government workflows</h3><p>Visitor-permit reservations and automated permit issuance.</p><span class="where">ITBA</span></li>
-      <li><h3>High-volume APIs</h3><p>Customer-facing e-channel APIs for Saudi Telecom.</p><span class="where">STC</span></li>
-      <li><h3>Partner integrations</h3><p>Two-way sync with Booking, Expedia and Agoda: idempotent reservation pipeline, conflict resolution, audit log.</p><span class="where">Jaras.io</span></li>
-      <li><h3>Multi-tenant SaaS</h3><p>PMS, payments and guest messaging for hotel operators, on call 24/7.</p><span class="where">Jaras.io</span></li>
+      <li><h3>Enterprise transformation</h3><p>Product strategy, business requirements and stakeholder workshops on a strategic project with the Public Investment Fund.</p><span class="tags"><span class="where">PIF</span></span></li>
+      <li><h3>Payments &amp; wallets</h3><p>SARIE instant transfers with SAMA, including disputes and reversals. The urpay wallet, from the founding team to 3M+ users in its first year.</p><span class="tags"><span class="where">Tweeq</span><span class="where">urpay</span></span></li>
+      <li><h3>Open banking</h3><p>A new open banking license from SAMA, then the service launched on it.</p><span class="tags"><span class="where">neoleap</span></span></li>
+      <li><h3>Merchants &amp; SMEs</h3><p>1,000+ merchants onto STC Pay's gateway. At neoleap: merchant onboarding cut from 3 days to 3 minutes, and an SME portal for finance and payroll.</p><span class="tags"><span class="where">STC Pay</span><span class="where">neoleap</span></span></li>
+      <li><h3>Bills &amp; recharge</h3><p>SADAD and telecom rejection rates cut from 30% to under 3%. Recharge activation up 58% and revenue up 45% in two quarters.</p><span class="tags"><span class="where">urpay</span></span></li>
+      <li><h3>AML &amp; compliance</h3><p>Rules and sanctions screening on Kafka, with alert review, under regulator scrutiny.</p><span class="tags"><span class="where">neoleap</span></span></li>
+      <li><h3>Identity &amp; government</h3><p>SSO across a government authority's systems, visitor-permit reservations and automated permit issuance.</p><span class="tags"><span class="where">ITBA</span></span></li>
+      <li><h3>Telecom channels</h3><p>High-volume customer-facing e-channel APIs, plus STC Pay, e-payment and eSIM projects.</p><span class="tags"><span class="where">STC</span></span></li>
+      <li><h3>Hotel platforms</h3><p>Multi-tenant PMS, payments, guest messaging, and two-way sync with Booking, Expedia and Agoda.</p><span class="tags"><span class="where">Jaras.io</span></span></li>
     </ul>
-    <p class="stack">Usually in <span>Python</span><span>Django</span><span>Go</span><span>Kafka</span><span>Postgres</span><span>Kubernetes</span><span>GCP</span></p>
   </section>
 
-  <!-- to add someone: copy the .person article, and add their rows to "built" above -->
+  <!-- to add someone: copy a .person article, and add their rows to "Where we've done this before" -->
   <section class="wrap" id="who">
     <h2>Who you'd get</h2>
     <p class="intro">Named people only. The name in the proposal is the person in your standup.</p>
@@ -373,27 +374,39 @@
       <article class="person">
         <div class="avatar" aria-hidden="true">AH</div>
         <h3>Abdulailah Al Hussayen</h3>
-        <p class="role">Lead architect · CTO at Jaras.io</p>
+        <p class="role">Lead architect<br>CTO at Jaras.io</p>
         <dl class="facts">
           <dt>Before</dt><dd>Tweeq, neoleap, ITBA, STC</dd>
-          <dt>In production</dt><dd>8+ years</dd>
+          <dt>Experience</dt><dd>8+ years in production</dd>
           <dt>Works in</dt><dd>Arabic, English</dd>
-          <dt>Based in</dt><dd>Riyadh, on-site or remote</dd>
+          <dt>Based in</dt><dd>Riyadh</dd>
         </dl>
         <p class="links"><a href="../">aaim.sh</a><a href="mailto:me@aaim.sh">me@aaim.sh</a></p>
+      </article>
+      <article class="person">
+        <div class="avatar" aria-hidden="true">AA</div>
+        <h3>Albraa Alfhaid</h3>
+        <p class="role">Product &amp; transformation lead<br>Co-founder of Joaan</p>
+        <dl class="facts">
+          <dt>Before</dt><dd>urpay (neoleap), STC Pay, STC</dd>
+          <dt>Experience</dt><dd>Fintech and telecom since 2017</dd>
+          <dt>Certified</dt><dd>PMP, PRINCE2, CPM, ISTQB</dd>
+          <dt>Works in</dt><dd>Arabic, English</dd>
+          <dt>Based in</dt><dd>Riyadh</dd>
+        </dl>
+        <p class="links"><a href="https://linkedin.com/in/albraa-alfhaid">LinkedIn</a></p>
       </article>
       <article class="seat">
         <div class="avatar" aria-hidden="true">?</div>
         <h3>This seat's open</h3>
         <p>Names go up when people sign. Here's the bar:</p>
         <ul>
-          <li>You have 8+ years on backend systems that run in production</li>
-          <li>You've run something where downtime or a bad write costs real money, and carried the pager for it</li>
-          <li>You've taken a design through a regulator, a security review or an external audit</li>
-          <li>You still ship production code</li>
+          <li>You have 8+ years delivering platforms that run in production</li>
+          <li>You've been accountable for something where downtime or a bad release costs real money</li>
+          <li>You've taken something through a regulator, a security review or an external audit</li>
           <li>You work in Arabic and English</li>
         </ul>
-        <a class="btn sm" href="mailto:me@aaim.sh?subject=Open%20seat%20on%20aaim.sh%2Fteam">Sounds like you? Say hi</a>
+        <a class="btn sm" href="mailto:me@aaim.sh?subject=Open%20seat%20at%20Impactors">Sounds like you? Say hi</a>
       </article>
     </div>
   </section>
@@ -440,8 +453,7 @@
 </main>
 
 <footer class="wrap foot">
-  <span>© <span id="yr">2026</span> Abdulailah Al Hussayen · Riyadh, UTC+03</span>
-  <a href="../">← Back to aaim.sh</a>
+  <span>© <span id="yr">2026</span> Impactors · Riyadh, UTC+03</span>
 </footer>
 
 <script>
